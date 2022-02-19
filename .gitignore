@@ -17,7 +17,6 @@
 # misc
 .DS_Store
 *.pem
-/prisma/rhodopseudomonas_db.db
 
 # debug
 npm-debug.log*
