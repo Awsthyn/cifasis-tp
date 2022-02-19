@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:rhodopseudomonas_db.db"
+}
+
+model Especie {
+  id     String @id
+  specie String
+  strain String
+}
+
+model Funcion {
+  id         String  @id
+  annotation String?
+}
+
+model Gen {
+  id       String  @id
+  sequence String?
+}
+
+model GenXEspecie {
+  id        Int    @id @default(autoincrement())
+  gene_id   String
+  specie_id String
+}
