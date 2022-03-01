@@ -1,5 +1,18 @@
 import { prisma } from "../../../prisma/prisma-client";
 
+const questions = [
+  "¿Cuántas especies posee la BDD?",
+  "¿Cuántos genes tiene la especie sp. AZUL?",
+  "¿Cuáles especies tienen un gen que cumple la función pucAB?",
+  "¿Qué  genes tienen un secuencia menor a 95 pares de bases?",
+  "¿La especie AZUL tiene un gen con la función pucAE?",
+  "¿Cuántas cepas tiene la especie rutila?",
+  "¿Cuáles son los genes únicos que posee la cepa AZUL?",
+  "¿Qué especies distintas hay?¿Cuántas cepas tiene cada especie?",
+  "¿Cuántas secuencias presentan el segmento GGAAC correspondiente a una secuencia consenso del promotor?",
+  "¿Cuál es la longitud promedio de las secuencias?"
+]
+
 const getQuery = (id) => {
   switch (+id) {
     case 1:
@@ -30,7 +43,7 @@ const getQuery = (id) => {
       GROUP BY GenXEspecie.gene_id
       HAVING COUNT(*) = 1 AND GenXEspecie.specie_id  = (SELECT id FROM Especie WHERE strain = 'AZUL');`;
     case 8:
-      return `SELECT DISTINCT(specie) FROM Especie;`;
+      return `SELECT specie, COUNT(*) FROM Especie GROUP BY specie;`;
     case 9:
       return `SELECT COUNT(*) FROM Gen WHERE sequence LIKE '%GGAAC%';`;
     case 10:
@@ -56,5 +69,5 @@ export default async function handler(req, res) {
 
   // Found the name.
   // Sends a HTTP success code
-  res.status(200).json({ data: result, query: getQuery(id) });
+  res.status(200).json({ data: result, query: getQuery(id), question: questions[+id - 1] });
 }

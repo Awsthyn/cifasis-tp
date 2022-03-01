@@ -32,12 +32,14 @@ export default function Queries(props) {
   return (
     <Layout>
       <>
-        <h1>Resultado</h1>
-        <div>
+      <div className="m-4">
+            <p><b>{data.question || ""}</b></p>
+        </div>
+        <div className="m-4">
             <p>Query realizada: </p>
             <p>{data.query || ""}</p>
         </div>
-        <table className="table">
+        <table className="m-4 w-75 table">
           <thead>
             <tr>
               {columsName.map((item) => (

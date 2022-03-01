@@ -10,7 +10,7 @@ const questions = [
   "¿La especie AZUL tiene un gen con la función pucAE?",
   "¿Cuántas cepas tiene la especie rutila?",
   "¿Cuáles son los genes únicos que posee la cepa AZUL?",
-  "¿Qué especies distintas hay?",
+  "¿Qué especies distintas hay?¿Cuántas cepas tiene cada especie?",
   "¿Cuántas secuencias presentan el segmento GGAAC correspondiente a una secuencia consenso del promotor?",
   "¿Cuál es la longitud promedio de las secuencias?"
 ]
